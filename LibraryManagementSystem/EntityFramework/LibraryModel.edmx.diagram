@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="402c8fcc8f6c4f1baf6651790aa60411" Name="Diagram1" ZoomLevel="64">
+        <EntityTypeShape EntityType="LMS_DBModel.BookCategories" Width="1.5" PointX="3" PointY="16.625" />
+        <EntityTypeShape EntityType="LMS_DBModel.Books" Width="1.5" PointX="5.25" PointY="13.25" />
+        <EntityTypeShape EntityType="LMS_DBModel.Departments" Width="1.5" PointX="6" PointY="6.875" />
+        <EntityTypeShape EntityType="LMS_DBModel.Designations" Width="1.5" PointX="0.75" PointY="12.625" />
+        <EntityTypeShape EntityType="LMS_DBModel.IssueBooks" Width="1.5" PointX="13.5" PointY="12.75" />
+        <EntityTypeShape EntityType="LMS_DBModel.Programs" Width="1.5" PointX="6" PointY="18.625" />
+        <EntityTypeShape EntityType="LMS_DBModel.ReturnBooks" Width="1.5" PointX="10.5" PointY="8.875" />
+        <EntityTypeShape EntityType="LMS_DBModel.Sessions" Width="1.5" PointX="6" PointY="21" />
+        <EntityTypeShape EntityType="LMS_DBModel.Students" Width="1.5" PointX="8.25" PointY="11" />
+        <EntityTypeShape EntityType="LMS_DBModel.UserPrivileges" Width="1.5" PointX="5.25" PointY="23.75" />
+        <EntityTypeShape EntityType="LMS_DBModel.Users" Width="1.5" PointX="5.25" PointY="10.375" />
+        <AssociationConnector Association="LMS_DBModel.FK_Books_BookTypes" />
+        <AssociationConnector Association="LMS_DBModel.FK_Books_Departments" />
+        <AssociationConnector Association="LMS_DBModel.FK_IssueBooks_Books" />
+        <AssociationConnector Association="LMS_DBModel.FK_ReturnBooks_Books" />
+        <AssociationConnector Association="LMS_DBModel.FK_Students_Departments" />
+        <AssociationConnector Association="LMS_DBModel.FK_IssueBooks_Students" />
+        <AssociationConnector Association="LMS_DBModel.FK_Students_Programs" />
+        <AssociationConnector Association="LMS_DBModel.FK_ReturnBooks_Students" />
+        <AssociationConnector Association="LMS_DBModel.FK_Students_Sessions" />
+        <EntityTypeShape EntityType="LMS_DBModel.Staffs" Width="1.5" PointX="3" PointY="11.375" />
+        <AssociationConnector Association="LMS_DBModel.FK_Books_Staffs" />
+        <AssociationConnector Association="LMS_DBModel.FK_Staffs_Designations" />
+        <AssociationConnector Association="LMS_DBModel.FK_IssueBooks_Staffs" />
+        <AssociationConnector Association="LMS_DBModel.FK_ReturnBooks_Staffs" />
+        <AssociationConnector Association="LMS_DBModel.FK_Students_Staffs" />
+        <AssociationConnector Association="LMS_DBModel.FK_UserPrivileges_Staffs" />
+        <AssociationConnector Association="LMS_DBModel.FK_Users_Staffs" />
+        <EntityTypeShape EntityType="LMS_DBModel.Fines" Width="1.5" PointX="10.5" PointY="12.75" />
+        <AssociationConnector Association="LMS_DBModel.FK_Fines_Books" />
+        <AssociationConnector Association="LMS_DBModel.FK_Fines_Staffs" />
+        <AssociationConnector Association="LMS_DBModel.FK_Fines_Students" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

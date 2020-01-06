@@ -1,0 +1,476 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="LMS_DBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="BookCategories">
+    <Key>
+      <PropertyRef Name="BookCategoryID" />
+    </Key>
+    <Property Name="BookCategoryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Books">
+    <Key>
+      <PropertyRef Name="BookID" />
+    </Key>
+    <Property Name="BookID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BookCategoryID" Type="int" Nullable="false" />
+    <Property Name="StaffID" Type="int" Nullable="false" />
+    <Property Name="DepartmentID" Type="int" Nullable="false" />
+    <Property Name="BookName" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="Author" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Edition" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="NoOfCopies" Type="int" Nullable="false" />
+    <Property Name="DateOfRegister" Type="date" Nullable="false" />
+    <Property Name="Price" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Departments">
+    <Key>
+      <PropertyRef Name="DepartmentID" />
+    </Key>
+    <Property Name="DepartmentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="EstablishDate" Type="date" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Designations">
+    <Key>
+      <PropertyRef Name="DesignationID" />
+    </Key>
+    <Property Name="DesignationID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="200" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Fines">
+    <Key>
+      <PropertyRef Name="FineID" />
+    </Key>
+    <Property Name="FineID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="StudentID" Type="int" Nullable="false" />
+    <Property Name="BookID" Type="int" Nullable="false" />
+    <Property Name="StaffID" Type="int" Nullable="false" />
+    <Property Name="Date" Type="date" Nullable="false" />
+    <Property Name="FineAmount" Type="int" Nullable="false" />
+    <Property Name="RecivedAmount" Type="int" Nullable="false" />
+    <Property Name="Status" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="IssueBooks">
+    <Key>
+      <PropertyRef Name="IssueID" />
+    </Key>
+    <Property Name="IssueID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="StudentID" Type="int" Nullable="false" />
+    <Property Name="BookID" Type="int" Nullable="false" />
+    <Property Name="StaffID" Type="int" Nullable="false" />
+    <Property Name="NoOfCopies" Type="int" Nullable="false" />
+    <Property Name="DateOfIssue" Type="date" Nullable="false" />
+    <Property Name="DateOfReturn" Type="date" Nullable="false" />
+    <Property Name="Status" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Programs">
+    <Key>
+      <PropertyRef Name="ProgramID" />
+    </Key>
+    <Property Name="ProgramID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ReturnBooks">
+    <Key>
+      <PropertyRef Name="ReturnID" />
+    </Key>
+    <Property Name="ReturnID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BookID" Type="int" Nullable="false" />
+    <Property Name="StudentID" Type="int" Nullable="false" />
+    <Property Name="StaffID" Type="int" Nullable="false" />
+    <Property Name="IssueDate" Type="date" Nullable="false" />
+    <Property Name="ReturnDate" Type="date" Nullable="false" />
+    <Property Name="Date" Type="date" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Sessions">
+    <Key>
+      <PropertyRef Name="SessionID" />
+    </Key>
+    <Property Name="SessionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="StartDate" Type="date" Nullable="false" />
+    <Property Name="EndDate" Type="date" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Staffs">
+    <Key>
+      <PropertyRef Name="StaffID" />
+    </Key>
+    <Property Name="StaffID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DesignationID" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="TCNO" Type="nvarchar" MaxLength="11" Nullable="false" />
+    <Property Name="Gender" Type="int" Nullable="false" />
+    <Property Name="Address" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="ContactNo" Type="nvarchar" MaxLength="13" Nullable="false" />
+    <Property Name="Status" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Students">
+    <Key>
+      <PropertyRef Name="StudentID" />
+    </Key>
+    <Property Name="StudentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SessionID" Type="int" Nullable="false" />
+    <Property Name="DepartmentID" Type="int" Nullable="false" />
+    <Property Name="ProgramID" Type="int" Nullable="false" />
+    <Property Name="StaffID" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="TCNO" Type="nvarchar" MaxLength="11" Nullable="false" />
+    <Property Name="Status" Type="int" Nullable="false" />
+    <Property Name="Gender" Type="int" Nullable="false" />
+    <Property Name="EnrollNo" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="ContactNo" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Address" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="RegisterDate" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserPrivileges">
+    <Key>
+      <PropertyRef Name="UserPrivilege" />
+    </Key>
+    <Property Name="UserPrivilege" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="StaffID" Type="int" Nullable="false" />
+    <Property Name="Configuration" Type="int" Nullable="false" />
+    <Property Name="Staff" Type="int" Nullable="false" />
+    <Property Name="Student" Type="int" Nullable="false" />
+    <Property Name="Book" Type="int" Nullable="false" />
+    <Property Name="IssueBook" Type="int" Nullable="false" />
+    <Property Name="ReturnBook" Type="int" Nullable="false" />
+    <Property Name="Report" Type="int" Nullable="false" />
+    <Property Name="Gsm" Type="int" Nullable="false" />
+    <Property Name="Email" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="StaffID" Type="int" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Books_BookTypes">
+    <End Role="BookCategories" Type="Self.BookCategories" Multiplicity="1" />
+    <End Role="Books" Type="Self.Books" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BookCategories">
+        <PropertyRef Name="BookCategoryID" />
+      </Principal>
+      <Dependent Role="Books">
+        <PropertyRef Name="BookCategoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Books_Departments">
+    <End Role="Departments" Type="Self.Departments" Multiplicity="1" />
+    <End Role="Books" Type="Self.Books" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Departments">
+        <PropertyRef Name="DepartmentID" />
+      </Principal>
+      <Dependent Role="Books">
+        <PropertyRef Name="DepartmentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Books_Staffs">
+    <End Role="Staffs" Type="Self.Staffs" Multiplicity="1" />
+    <End Role="Books" Type="Self.Books" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Staffs">
+        <PropertyRef Name="StaffID" />
+      </Principal>
+      <Dependent Role="Books">
+        <PropertyRef Name="StaffID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Fines_Books">
+    <End Role="Books" Type="Self.Books" Multiplicity="1" />
+    <End Role="Fines" Type="Self.Fines" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Books">
+        <PropertyRef Name="BookID" />
+      </Principal>
+      <Dependent Role="Fines">
+        <PropertyRef Name="BookID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Fines_Staffs">
+    <End Role="Staffs" Type="Self.Staffs" Multiplicity="1" />
+    <End Role="Fines" Type="Self.Fines" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Staffs">
+        <PropertyRef Name="StaffID" />
+      </Principal>
+      <Dependent Role="Fines">
+        <PropertyRef Name="StaffID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Fines_Students">
+    <End Role="Students" Type="Self.Students" Multiplicity="1" />
+    <End Role="Fines" Type="Self.Fines" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Students">
+        <PropertyRef Name="StudentID" />
+      </Principal>
+      <Dependent Role="Fines">
+        <PropertyRef Name="StudentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_IssueBooks_Books">
+    <End Role="Books" Type="Self.Books" Multiplicity="1" />
+    <End Role="IssueBooks" Type="Self.IssueBooks" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Books">
+        <PropertyRef Name="BookID" />
+      </Principal>
+      <Dependent Role="IssueBooks">
+        <PropertyRef Name="BookID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_IssueBooks_Staffs">
+    <End Role="Staffs" Type="Self.Staffs" Multiplicity="1" />
+    <End Role="IssueBooks" Type="Self.IssueBooks" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Staffs">
+        <PropertyRef Name="StaffID" />
+      </Principal>
+      <Dependent Role="IssueBooks">
+        <PropertyRef Name="StaffID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_IssueBooks_Students">
+    <End Role="Students" Type="Self.Students" Multiplicity="1" />
+    <End Role="IssueBooks" Type="Self.IssueBooks" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Students">
+        <PropertyRef Name="StudentID" />
+      </Principal>
+      <Dependent Role="IssueBooks">
+        <PropertyRef Name="StudentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ReturnBooks_Books">
+    <End Role="Books" Type="Self.Books" Multiplicity="1" />
+    <End Role="ReturnBooks" Type="Self.ReturnBooks" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Books">
+        <PropertyRef Name="BookID" />
+      </Principal>
+      <Dependent Role="ReturnBooks">
+        <PropertyRef Name="BookID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ReturnBooks_Staffs">
+    <End Role="Staffs" Type="Self.Staffs" Multiplicity="1" />
+    <End Role="ReturnBooks" Type="Self.ReturnBooks" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Staffs">
+        <PropertyRef Name="StaffID" />
+      </Principal>
+      <Dependent Role="ReturnBooks">
+        <PropertyRef Name="StaffID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ReturnBooks_Students">
+    <End Role="Students" Type="Self.Students" Multiplicity="1" />
+    <End Role="ReturnBooks" Type="Self.ReturnBooks" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Students">
+        <PropertyRef Name="StudentID" />
+      </Principal>
+      <Dependent Role="ReturnBooks">
+        <PropertyRef Name="StudentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Staffs_Designations">
+    <End Role="Designations" Type="Self.Designations" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Staffs" Type="Self.Staffs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Designations">
+        <PropertyRef Name="DesignationID" />
+      </Principal>
+      <Dependent Role="Staffs">
+        <PropertyRef Name="DesignationID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Students_Departments">
+    <End Role="Departments" Type="Self.Departments" Multiplicity="1" />
+    <End Role="Students" Type="Self.Students" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Departments">
+        <PropertyRef Name="DepartmentID" />
+      </Principal>
+      <Dependent Role="Students">
+        <PropertyRef Name="DepartmentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Students_Programs">
+    <End Role="Programs" Type="Self.Programs" Multiplicity="1" />
+    <End Role="Students" Type="Self.Students" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Programs">
+        <PropertyRef Name="ProgramID" />
+      </Principal>
+      <Dependent Role="Students">
+        <PropertyRef Name="ProgramID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Students_Sessions">
+    <End Role="Sessions" Type="Self.Sessions" Multiplicity="1" />
+    <End Role="Students" Type="Self.Students" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sessions">
+        <PropertyRef Name="SessionID" />
+      </Principal>
+      <Dependent Role="Students">
+        <PropertyRef Name="SessionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Students_Staffs">
+    <End Role="Staffs" Type="Self.Staffs" Multiplicity="1" />
+    <End Role="Students" Type="Self.Students" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Staffs">
+        <PropertyRef Name="StaffID" />
+      </Principal>
+      <Dependent Role="Students">
+        <PropertyRef Name="StaffID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserPrivileges_Staffs">
+    <End Role="Staffs" Type="Self.Staffs" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="UserPrivileges" Type="Self.UserPrivileges" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Staffs">
+        <PropertyRef Name="StaffID" />
+      </Principal>
+      <Dependent Role="UserPrivileges">
+        <PropertyRef Name="StaffID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Users_Staffs">
+    <End Role="Staffs" Type="Self.Staffs" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Users" Type="Self.Users" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Staffs">
+        <PropertyRef Name="StaffID" />
+      </Principal>
+      <Dependent Role="Users">
+        <PropertyRef Name="StaffID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="LMS_DBModelStoreContainer">
+    <EntitySet Name="BookCategories" EntityType="Self.BookCategories" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Books" EntityType="Self.Books" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Departments" EntityType="Self.Departments" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Designations" EntityType="Self.Designations" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Fines" EntityType="Self.Fines" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="IssueBooks" EntityType="Self.IssueBooks" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Programs" EntityType="Self.Programs" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ReturnBooks" EntityType="Self.ReturnBooks" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Sessions" EntityType="Self.Sessions" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Staffs" EntityType="Self.Staffs" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Students" EntityType="Self.Students" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserPrivileges" EntityType="Self.UserPrivileges" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Books_BookTypes" Association="Self.FK_Books_BookTypes">
+      <End Role="BookCategories" EntitySet="BookCategories" />
+      <End Role="Books" EntitySet="Books" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Books_Departments" Association="Self.FK_Books_Departments">
+      <End Role="Departments" EntitySet="Departments" />
+      <End Role="Books" EntitySet="Books" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Books_Staffs" Association="Self.FK_Books_Staffs">
+      <End Role="Staffs" EntitySet="Staffs" />
+      <End Role="Books" EntitySet="Books" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Fines_Books" Association="Self.FK_Fines_Books">
+      <End Role="Books" EntitySet="Books" />
+      <End Role="Fines" EntitySet="Fines" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Fines_Staffs" Association="Self.FK_Fines_Staffs">
+      <End Role="Staffs" EntitySet="Staffs" />
+      <End Role="Fines" EntitySet="Fines" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Fines_Students" Association="Self.FK_Fines_Students">
+      <End Role="Students" EntitySet="Students" />
+      <End Role="Fines" EntitySet="Fines" />
+    </AssociationSet>
+    <AssociationSet Name="FK_IssueBooks_Books" Association="Self.FK_IssueBooks_Books">
+      <End Role="Books" EntitySet="Books" />
+      <End Role="IssueBooks" EntitySet="IssueBooks" />
+    </AssociationSet>
+    <AssociationSet Name="FK_IssueBooks_Staffs" Association="Self.FK_IssueBooks_Staffs">
+      <End Role="Staffs" EntitySet="Staffs" />
+      <End Role="IssueBooks" EntitySet="IssueBooks" />
+    </AssociationSet>
+    <AssociationSet Name="FK_IssueBooks_Students" Association="Self.FK_IssueBooks_Students">
+      <End Role="Students" EntitySet="Students" />
+      <End Role="IssueBooks" EntitySet="IssueBooks" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ReturnBooks_Books" Association="Self.FK_ReturnBooks_Books">
+      <End Role="Books" EntitySet="Books" />
+      <End Role="ReturnBooks" EntitySet="ReturnBooks" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ReturnBooks_Staffs" Association="Self.FK_ReturnBooks_Staffs">
+      <End Role="Staffs" EntitySet="Staffs" />
+      <End Role="ReturnBooks" EntitySet="ReturnBooks" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ReturnBooks_Students" Association="Self.FK_ReturnBooks_Students">
+      <End Role="Students" EntitySet="Students" />
+      <End Role="ReturnBooks" EntitySet="ReturnBooks" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Staffs_Designations" Association="Self.FK_Staffs_Designations">
+      <End Role="Designations" EntitySet="Designations" />
+      <End Role="Staffs" EntitySet="Staffs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Students_Departments" Association="Self.FK_Students_Departments">
+      <End Role="Departments" EntitySet="Departments" />
+      <End Role="Students" EntitySet="Students" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Students_Programs" Association="Self.FK_Students_Programs">
+      <End Role="Programs" EntitySet="Programs" />
+      <End Role="Students" EntitySet="Students" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Students_Sessions" Association="Self.FK_Students_Sessions">
+      <End Role="Sessions" EntitySet="Sessions" />
+      <End Role="Students" EntitySet="Students" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Students_Staffs" Association="Self.FK_Students_Staffs">
+      <End Role="Staffs" EntitySet="Staffs" />
+      <End Role="Students" EntitySet="Students" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserPrivileges_Staffs" Association="Self.FK_UserPrivileges_Staffs">
+      <End Role="Staffs" EntitySet="Staffs" />
+      <End Role="UserPrivileges" EntitySet="UserPrivileges" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Users_Staffs" Association="Self.FK_Users_Staffs">
+      <End Role="Staffs" EntitySet="Staffs" />
+      <End Role="Users" EntitySet="Users" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

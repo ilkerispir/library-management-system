@@ -1,0 +1,514 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="LMS_DBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="LibraryDBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="BookCategories" EntityType="LMS_DBModel.BookCategories" />
+    <EntitySet Name="Books" EntityType="LMS_DBModel.Books" />
+    <EntitySet Name="Departments" EntityType="LMS_DBModel.Departments" />
+    <EntitySet Name="Designations" EntityType="LMS_DBModel.Designations" />
+    <EntitySet Name="IssueBooks" EntityType="LMS_DBModel.IssueBooks" />
+    <EntitySet Name="Programs" EntityType="LMS_DBModel.Programs" />
+    <EntitySet Name="ReturnBooks" EntityType="LMS_DBModel.ReturnBooks" />
+    <EntitySet Name="Sessions" EntityType="LMS_DBModel.Sessions" />
+    <EntitySet Name="Students" EntityType="LMS_DBModel.Students" />
+    <EntitySet Name="UserPrivileges" EntityType="LMS_DBModel.UserPrivileges" />
+    <EntitySet Name="Users" EntityType="LMS_DBModel.Users" />
+    <AssociationSet Name="FK_Books_BookTypes" Association="LMS_DBModel.FK_Books_BookTypes">
+      <End Role="BookCategories" EntitySet="BookCategories" />
+      <End Role="Books" EntitySet="Books" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Books_Departments" Association="LMS_DBModel.FK_Books_Departments">
+      <End Role="Departments" EntitySet="Departments" />
+      <End Role="Books" EntitySet="Books" />
+    </AssociationSet>
+    <AssociationSet Name="FK_IssueBooks_Books" Association="LMS_DBModel.FK_IssueBooks_Books">
+      <End Role="Books" EntitySet="Books" />
+      <End Role="IssueBooks" EntitySet="IssueBooks" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ReturnBooks_Books" Association="LMS_DBModel.FK_ReturnBooks_Books">
+      <End Role="Books" EntitySet="Books" />
+      <End Role="ReturnBooks" EntitySet="ReturnBooks" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Students_Departments" Association="LMS_DBModel.FK_Students_Departments">
+      <End Role="Departments" EntitySet="Departments" />
+      <End Role="Students" EntitySet="Students" />
+    </AssociationSet>
+    <AssociationSet Name="FK_IssueBooks_Students" Association="LMS_DBModel.FK_IssueBooks_Students">
+      <End Role="Students" EntitySet="Students" />
+      <End Role="IssueBooks" EntitySet="IssueBooks" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Students_Programs" Association="LMS_DBModel.FK_Students_Programs">
+      <End Role="Programs" EntitySet="Programs" />
+      <End Role="Students" EntitySet="Students" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ReturnBooks_Students" Association="LMS_DBModel.FK_ReturnBooks_Students">
+      <End Role="Students" EntitySet="Students" />
+      <End Role="ReturnBooks" EntitySet="ReturnBooks" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Students_Sessions" Association="LMS_DBModel.FK_Students_Sessions">
+      <End Role="Sessions" EntitySet="Sessions" />
+      <End Role="Students" EntitySet="Students" />
+    </AssociationSet>
+    <EntitySet Name="Staffs" EntityType="LMS_DBModel.Staffs" />
+    <AssociationSet Name="FK_Books_Staffs" Association="LMS_DBModel.FK_Books_Staffs">
+      <End Role="Staffs" EntitySet="Staffs" />
+      <End Role="Books" EntitySet="Books" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Staffs_Designations" Association="LMS_DBModel.FK_Staffs_Designations">
+      <End Role="Designations" EntitySet="Designations" />
+      <End Role="Staffs" EntitySet="Staffs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_IssueBooks_Staffs" Association="LMS_DBModel.FK_IssueBooks_Staffs">
+      <End Role="Staffs" EntitySet="Staffs" />
+      <End Role="IssueBooks" EntitySet="IssueBooks" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ReturnBooks_Staffs" Association="LMS_DBModel.FK_ReturnBooks_Staffs">
+      <End Role="Staffs" EntitySet="Staffs" />
+      <End Role="ReturnBooks" EntitySet="ReturnBooks" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Students_Staffs" Association="LMS_DBModel.FK_Students_Staffs">
+      <End Role="Staffs" EntitySet="Staffs" />
+      <End Role="Students" EntitySet="Students" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserPrivileges_Staffs" Association="LMS_DBModel.FK_UserPrivileges_Staffs">
+      <End Role="Staffs" EntitySet="Staffs" />
+      <End Role="UserPrivileges" EntitySet="UserPrivileges" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Users_Staffs" Association="LMS_DBModel.FK_Users_Staffs">
+      <End Role="Staffs" EntitySet="Staffs" />
+      <End Role="Users" EntitySet="Users" />
+    </AssociationSet>
+    <EntitySet Name="Fines" EntityType="LMS_DBModel.Fines" />
+    <AssociationSet Name="FK_Fines_Books" Association="LMS_DBModel.FK_Fines_Books">
+      <End Role="Books" EntitySet="Books" />
+      <End Role="Fines" EntitySet="Fines" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Fines_Staffs" Association="LMS_DBModel.FK_Fines_Staffs">
+      <End Role="Staffs" EntitySet="Staffs" />
+      <End Role="Fines" EntitySet="Fines" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Fines_Students" Association="LMS_DBModel.FK_Fines_Students">
+      <End Role="Students" EntitySet="Students" />
+      <End Role="Fines" EntitySet="Fines" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="BookCategories">
+    <Key>
+      <PropertyRef Name="BookCategoryID" />
+    </Key>
+    <Property Name="BookCategoryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Books" Relationship="LMS_DBModel.FK_Books_BookTypes" FromRole="BookCategories" ToRole="Books" />
+  </EntityType>
+  <EntityType Name="Books">
+    <Key>
+      <PropertyRef Name="BookID" />
+    </Key>
+    <Property Name="BookID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BookCategoryID" Type="Int32" Nullable="false" />
+    <Property Name="StaffID" Type="Int32" Nullable="false" />
+    <Property Name="DepartmentID" Type="Int32" Nullable="false" />
+    <Property Name="BookName" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Author" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Title" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Edition" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="NoOfCopies" Type="Int32" Nullable="false" />
+    <Property Name="DateOfRegister" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Price" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="BookCategories" Relationship="LMS_DBModel.FK_Books_BookTypes" FromRole="Books" ToRole="BookCategories" />
+    <NavigationProperty Name="Departments" Relationship="LMS_DBModel.FK_Books_Departments" FromRole="Books" ToRole="Departments" />
+    <NavigationProperty Name="IssueBooks" Relationship="LMS_DBModel.FK_IssueBooks_Books" FromRole="Books" ToRole="IssueBooks" />
+    <NavigationProperty Name="ReturnBooks" Relationship="LMS_DBModel.FK_ReturnBooks_Books" FromRole="Books" ToRole="ReturnBooks" />
+    <NavigationProperty Name="Staffs" Relationship="LMS_DBModel.FK_Books_Staffs" FromRole="Books" ToRole="Staffs" />
+    <NavigationProperty Name="Fines" Relationship="LMS_DBModel.FK_Fines_Books" FromRole="Books" ToRole="Fines" />
+  </EntityType>
+  <EntityType Name="Departments">
+    <Key>
+      <PropertyRef Name="DepartmentID" />
+    </Key>
+    <Property Name="DepartmentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="EstablishDate" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="Books" Relationship="LMS_DBModel.FK_Books_Departments" FromRole="Departments" ToRole="Books" />
+    <NavigationProperty Name="Students" Relationship="LMS_DBModel.FK_Students_Departments" FromRole="Departments" ToRole="Students" />
+  </EntityType>
+  <EntityType Name="Designations">
+    <Key>
+      <PropertyRef Name="DesignationID" />
+    </Key>
+    <Property Name="DesignationID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Staffs" Relationship="LMS_DBModel.FK_Staffs_Designations" FromRole="Designations" ToRole="Staffs" />
+  </EntityType>
+  <EntityType Name="IssueBooks">
+    <Key>
+      <PropertyRef Name="IssueID" />
+    </Key>
+    <Property Name="IssueID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="StudentID" Type="Int32" Nullable="false" />
+    <Property Name="BookID" Type="Int32" Nullable="false" />
+    <Property Name="StaffID" Type="Int32" Nullable="false" />
+    <Property Name="NoOfCopies" Type="Int32" Nullable="false" />
+    <Property Name="DateOfIssue" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="DateOfReturn" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Status" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Books" Relationship="LMS_DBModel.FK_IssueBooks_Books" FromRole="IssueBooks" ToRole="Books" />
+    <NavigationProperty Name="Students" Relationship="LMS_DBModel.FK_IssueBooks_Students" FromRole="IssueBooks" ToRole="Students" />
+    <NavigationProperty Name="Staffs" Relationship="LMS_DBModel.FK_IssueBooks_Staffs" FromRole="IssueBooks" ToRole="Staffs" />
+  </EntityType>
+  <EntityType Name="Programs">
+    <Key>
+      <PropertyRef Name="ProgramID" />
+    </Key>
+    <Property Name="ProgramID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Students" Relationship="LMS_DBModel.FK_Students_Programs" FromRole="Programs" ToRole="Students" />
+  </EntityType>
+  <EntityType Name="ReturnBooks">
+    <Key>
+      <PropertyRef Name="ReturnID" />
+    </Key>
+    <Property Name="ReturnID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BookID" Type="Int32" Nullable="false" />
+    <Property Name="StudentID" Type="Int32" Nullable="false" />
+    <Property Name="StaffID" Type="Int32" Nullable="false" />
+    <Property Name="IssueDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="ReturnDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="Books" Relationship="LMS_DBModel.FK_ReturnBooks_Books" FromRole="ReturnBooks" ToRole="Books" />
+    <NavigationProperty Name="Students" Relationship="LMS_DBModel.FK_ReturnBooks_Students" FromRole="ReturnBooks" ToRole="Students" />
+    <NavigationProperty Name="Staffs" Relationship="LMS_DBModel.FK_ReturnBooks_Staffs" FromRole="ReturnBooks" ToRole="Staffs" />
+  </EntityType>
+  <EntityType Name="Sessions">
+    <Key>
+      <PropertyRef Name="SessionID" />
+    </Key>
+    <Property Name="SessionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="EndDate" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="Students" Relationship="LMS_DBModel.FK_Students_Sessions" FromRole="Sessions" ToRole="Students" />
+  </EntityType>
+  <EntityType Name="Students">
+    <Key>
+      <PropertyRef Name="StudentID" />
+    </Key>
+    <Property Name="StudentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SessionID" Type="Int32" Nullable="false" />
+    <Property Name="DepartmentID" Type="Int32" Nullable="false" />
+    <Property Name="ProgramID" Type="Int32" Nullable="false" />
+    <Property Name="StaffID" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="TCNO" Type="String" Nullable="false" MaxLength="11" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="Int32" Nullable="false" />
+    <Property Name="Gender" Type="Int32" Nullable="false" />
+    <Property Name="EnrollNo" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="ContactNo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Address" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="RegisterDate" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="Departments" Relationship="LMS_DBModel.FK_Students_Departments" FromRole="Students" ToRole="Departments" />
+    <NavigationProperty Name="IssueBooks" Relationship="LMS_DBModel.FK_IssueBooks_Students" FromRole="Students" ToRole="IssueBooks" />
+    <NavigationProperty Name="Programs" Relationship="LMS_DBModel.FK_Students_Programs" FromRole="Students" ToRole="Programs" />
+    <NavigationProperty Name="ReturnBooks" Relationship="LMS_DBModel.FK_ReturnBooks_Students" FromRole="Students" ToRole="ReturnBooks" />
+    <NavigationProperty Name="Sessions" Relationship="LMS_DBModel.FK_Students_Sessions" FromRole="Students" ToRole="Sessions" />
+    <NavigationProperty Name="Staffs" Relationship="LMS_DBModel.FK_Students_Staffs" FromRole="Students" ToRole="Staffs" />
+    <NavigationProperty Name="Fines" Relationship="LMS_DBModel.FK_Fines_Students" FromRole="Students" ToRole="Fines" />
+  </EntityType>
+  <EntityType Name="UserPrivileges">
+    <Key>
+      <PropertyRef Name="UserPrivilege" />
+    </Key>
+    <Property Name="UserPrivilege" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="StaffID" Type="Int32" Nullable="false" />
+    <Property Name="Configuration" Type="Int32" Nullable="false" />
+    <Property Name="Staff" Type="Int32" Nullable="false" />
+    <Property Name="Student" Type="Int32" Nullable="false" />
+    <Property Name="Book" Type="Int32" Nullable="false" />
+    <Property Name="IssueBook" Type="Int32" Nullable="false" />
+    <Property Name="ReturnBook" Type="Int32" Nullable="false" />
+    <Property Name="Report" Type="Int32" Nullable="false" />
+    <Property Name="Gsm" Type="Int32" Nullable="false" />
+    <Property Name="Email" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Staffs" Relationship="LMS_DBModel.FK_UserPrivileges_Staffs" FromRole="UserPrivileges" ToRole="Staffs" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="StaffID" Type="Int32" Nullable="false" />
+    <Property Name="UserName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Staffs" Relationship="LMS_DBModel.FK_Users_Staffs" FromRole="Users" ToRole="Staffs" />
+  </EntityType>
+  <Association Name="FK_Books_BookTypes">
+    <End Type="LMS_DBModel.BookCategories" Role="BookCategories" Multiplicity="1" />
+    <End Type="LMS_DBModel.Books" Role="Books" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BookCategories">
+        <PropertyRef Name="BookCategoryID" />
+      </Principal>
+      <Dependent Role="Books">
+        <PropertyRef Name="BookCategoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Books_Departments">
+    <End Type="LMS_DBModel.Departments" Role="Departments" Multiplicity="1" />
+    <End Type="LMS_DBModel.Books" Role="Books" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Departments">
+        <PropertyRef Name="DepartmentID" />
+      </Principal>
+      <Dependent Role="Books">
+        <PropertyRef Name="DepartmentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_IssueBooks_Books">
+    <End Type="LMS_DBModel.Books" Role="Books" Multiplicity="1" />
+    <End Type="LMS_DBModel.IssueBooks" Role="IssueBooks" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Books">
+        <PropertyRef Name="BookID" />
+      </Principal>
+      <Dependent Role="IssueBooks">
+        <PropertyRef Name="BookID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ReturnBooks_Books">
+    <End Type="LMS_DBModel.Books" Role="Books" Multiplicity="1" />
+    <End Type="LMS_DBModel.ReturnBooks" Role="ReturnBooks" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Books">
+        <PropertyRef Name="BookID" />
+      </Principal>
+      <Dependent Role="ReturnBooks">
+        <PropertyRef Name="BookID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Students_Departments">
+    <End Type="LMS_DBModel.Departments" Role="Departments" Multiplicity="1" />
+    <End Type="LMS_DBModel.Students" Role="Students" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Departments">
+        <PropertyRef Name="DepartmentID" />
+      </Principal>
+      <Dependent Role="Students">
+        <PropertyRef Name="DepartmentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_IssueBooks_Students">
+    <End Type="LMS_DBModel.Students" Role="Students" Multiplicity="1" />
+    <End Type="LMS_DBModel.IssueBooks" Role="IssueBooks" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Students">
+        <PropertyRef Name="StudentID" />
+      </Principal>
+      <Dependent Role="IssueBooks">
+        <PropertyRef Name="StudentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Students_Programs">
+    <End Type="LMS_DBModel.Programs" Role="Programs" Multiplicity="1" />
+    <End Type="LMS_DBModel.Students" Role="Students" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Programs">
+        <PropertyRef Name="ProgramID" />
+      </Principal>
+      <Dependent Role="Students">
+        <PropertyRef Name="ProgramID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ReturnBooks_Students">
+    <End Type="LMS_DBModel.Students" Role="Students" Multiplicity="1" />
+    <End Type="LMS_DBModel.ReturnBooks" Role="ReturnBooks" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Students">
+        <PropertyRef Name="StudentID" />
+      </Principal>
+      <Dependent Role="ReturnBooks">
+        <PropertyRef Name="StudentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Students_Sessions">
+    <End Type="LMS_DBModel.Sessions" Role="Sessions" Multiplicity="1" />
+    <End Type="LMS_DBModel.Students" Role="Students" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sessions">
+        <PropertyRef Name="SessionID" />
+      </Principal>
+      <Dependent Role="Students">
+        <PropertyRef Name="SessionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Staffs">
+    <Key>
+      <PropertyRef Name="StaffID" />
+    </Key>
+    <Property Name="StaffID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DesignationID" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="TCNO" Type="String" Nullable="false" MaxLength="11" FixedLength="false" Unicode="true" />
+    <Property Name="Gender" Type="Int32" Nullable="false" />
+    <Property Name="Address" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="ContactNo" Type="String" Nullable="false" MaxLength="13" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Books" Relationship="LMS_DBModel.FK_Books_Staffs" FromRole="Staffs" ToRole="Books" />
+    <NavigationProperty Name="Designations" Relationship="LMS_DBModel.FK_Staffs_Designations" FromRole="Staffs" ToRole="Designations" />
+    <NavigationProperty Name="IssueBooks" Relationship="LMS_DBModel.FK_IssueBooks_Staffs" FromRole="Staffs" ToRole="IssueBooks" />
+    <NavigationProperty Name="ReturnBooks" Relationship="LMS_DBModel.FK_ReturnBooks_Staffs" FromRole="Staffs" ToRole="ReturnBooks" />
+    <NavigationProperty Name="Students" Relationship="LMS_DBModel.FK_Students_Staffs" FromRole="Staffs" ToRole="Students" />
+    <NavigationProperty Name="UserPrivileges" Relationship="LMS_DBModel.FK_UserPrivileges_Staffs" FromRole="Staffs" ToRole="UserPrivileges" />
+    <NavigationProperty Name="Users" Relationship="LMS_DBModel.FK_Users_Staffs" FromRole="Staffs" ToRole="Users" />
+    <NavigationProperty Name="Fines" Relationship="LMS_DBModel.FK_Fines_Staffs" FromRole="Staffs" ToRole="Fines" />
+  </EntityType>
+  <Association Name="FK_Books_Staffs">
+    <End Type="LMS_DBModel.Staffs" Role="Staffs" Multiplicity="1" />
+    <End Type="LMS_DBModel.Books" Role="Books" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Staffs">
+        <PropertyRef Name="StaffID" />
+      </Principal>
+      <Dependent Role="Books">
+        <PropertyRef Name="StaffID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Staffs_Designations">
+    <End Type="LMS_DBModel.Designations" Role="Designations" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="LMS_DBModel.Staffs" Role="Staffs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Designations">
+        <PropertyRef Name="DesignationID" />
+      </Principal>
+      <Dependent Role="Staffs">
+        <PropertyRef Name="DesignationID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_IssueBooks_Staffs">
+    <End Type="LMS_DBModel.Staffs" Role="Staffs" Multiplicity="1" />
+    <End Type="LMS_DBModel.IssueBooks" Role="IssueBooks" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Staffs">
+        <PropertyRef Name="StaffID" />
+      </Principal>
+      <Dependent Role="IssueBooks">
+        <PropertyRef Name="StaffID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ReturnBooks_Staffs">
+    <End Type="LMS_DBModel.Staffs" Role="Staffs" Multiplicity="1" />
+    <End Type="LMS_DBModel.ReturnBooks" Role="ReturnBooks" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Staffs">
+        <PropertyRef Name="StaffID" />
+      </Principal>
+      <Dependent Role="ReturnBooks">
+        <PropertyRef Name="StaffID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Students_Staffs">
+    <End Type="LMS_DBModel.Staffs" Role="Staffs" Multiplicity="1" />
+    <End Type="LMS_DBModel.Students" Role="Students" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Staffs">
+        <PropertyRef Name="StaffID" />
+      </Principal>
+      <Dependent Role="Students">
+        <PropertyRef Name="StaffID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserPrivileges_Staffs">
+    <End Type="LMS_DBModel.Staffs" Role="Staffs" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="LMS_DBModel.UserPrivileges" Role="UserPrivileges" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Staffs">
+        <PropertyRef Name="StaffID" />
+      </Principal>
+      <Dependent Role="UserPrivileges">
+        <PropertyRef Name="StaffID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Users_Staffs">
+    <End Type="LMS_DBModel.Staffs" Role="Staffs" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="LMS_DBModel.Users" Role="Users" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Staffs">
+        <PropertyRef Name="StaffID" />
+      </Principal>
+      <Dependent Role="Users">
+        <PropertyRef Name="StaffID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Fines">
+    <Key>
+      <PropertyRef Name="FineID" />
+    </Key>
+    <Property Name="FineID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="StudentID" Type="Int32" Nullable="false" />
+    <Property Name="BookID" Type="Int32" Nullable="false" />
+    <Property Name="StaffID" Type="Int32" Nullable="false" />
+    <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="FineAmount" Type="Int32" Nullable="false" />
+    <Property Name="RecivedAmount" Type="Int32" Nullable="false" />
+    <Property Name="Status" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Books" Relationship="LMS_DBModel.FK_Fines_Books" FromRole="Fines" ToRole="Books" />
+    <NavigationProperty Name="Staffs" Relationship="LMS_DBModel.FK_Fines_Staffs" FromRole="Fines" ToRole="Staffs" />
+    <NavigationProperty Name="Students" Relationship="LMS_DBModel.FK_Fines_Students" FromRole="Fines" ToRole="Students" />
+  </EntityType>
+  <Association Name="FK_Fines_Books">
+    <End Type="LMS_DBModel.Books" Role="Books" Multiplicity="1" />
+    <End Type="LMS_DBModel.Fines" Role="Fines" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Books">
+        <PropertyRef Name="BookID" />
+      </Principal>
+      <Dependent Role="Fines">
+        <PropertyRef Name="BookID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Fines_Staffs">
+    <End Type="LMS_DBModel.Staffs" Role="Staffs" Multiplicity="1" />
+    <End Type="LMS_DBModel.Fines" Role="Fines" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Staffs">
+        <PropertyRef Name="StaffID" />
+      </Principal>
+      <Dependent Role="Fines">
+        <PropertyRef Name="StaffID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Fines_Students">
+    <End Type="LMS_DBModel.Students" Role="Students" Multiplicity="1" />
+    <End Type="LMS_DBModel.Fines" Role="Fines" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Students">
+        <PropertyRef Name="StudentID" />
+      </Principal>
+      <Dependent Role="Fines">
+        <PropertyRef Name="StudentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>
