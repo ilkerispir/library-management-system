@@ -2,15 +2,15 @@
 
 ## Login Page
 
-![intro](Screenshots/login.png)
+![intro](Screenshots/Login.png)
 
 ## Splash Screen 
 
-![intro](Screenshots/splash.png)
+![intro](Screenshots/Splash.png)
 
 ## Main Page
 
-![intro](Screenshots/main.png)
+![intro](Screenshots/Main.png)
 
 * Seed Database Information
   * User ID  : ilker
